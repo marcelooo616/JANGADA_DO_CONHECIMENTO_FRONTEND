@@ -3,19 +3,15 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query'; // Importa o hook principal
 import { useAuth } from '../context/AuthContext';
-import Sidebar from '../components/Sidebar';
-import SearchBar from '../components/SearchBar';
-import Pagination from '../components/Pagination';
 import NewsGrid from '../components/NewsGrid';
 import './HomePage.css';
 import ArticleCard from '../components/ArticleCard';
 import HeroJangada from '../components/HeroJangada';
-import Footer from '../components/Footer';
 import CertificationBanner from '../components/CertificationBanner';
 
 
 const API_URL = 'https://137.131.212.103/api';
-const NEWS_API_KEY = "1e8f2b8f70f849aeb216d4f97f814822";
+
 
 // Função que busca os artigos da NOSSA API. Ela fica fora do componente.
 const fetchArticles = async ({ queryKey }) => {
@@ -34,11 +30,10 @@ const fetchArticles = async ({ queryKey }) => {
 
 // Função que busca as notícias da API externa.
 const fetchMicrosoftNews = async () => {
-    if (!NEWS_API_KEY) return []; // Não faz a busca se a chave não existir
-    const { data } = await axios.get(`https://newsapi.org/v2/everything?q=microsoft&language=pt&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`);
-    return data.articles.slice(0, 6);
-}
-
+  // O API_URL é sua variável de ambiente (https://137.131.212.103/api)
+  const { data } = await axios.get(`${API_URL}/news`);
+  return data;
+};
 
 function HomePage() {
   const { user } = useAuth();
