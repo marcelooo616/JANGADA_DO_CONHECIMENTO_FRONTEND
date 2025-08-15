@@ -1,0 +1,50 @@
+/* src/components/NewsCarousel.css */
+
+.news-section {
+  margin-top: 3rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
+}
+
+.news-carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.carousel-content {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.carousel-arrow {
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+/* <<-- ESTA É A NOVA REGRA DE HOVER -->> */
+.carousel-arrow:hover {
+  background-color: var(--background-primary); /* Fundo 'meio cinza' */
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+  transform: scale(1.1); /* Efeito de leve crescimento */
+  /* A 'luz cinza' que você mencionou (uma sombra sutil) */
+  box-shadow: 0 0 15px rgba(128, 128, 128, 0.2); 
+}
+
+.carousel-arrow.hidden {
+  visibility: hidden; /* Oculta o botão, mas mantém seu espaço */
+  pointer-events: none; /* Garante que o botão invisível não seja clicável */
+}

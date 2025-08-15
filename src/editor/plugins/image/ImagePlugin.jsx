@@ -8,7 +8,7 @@ import { $createImageNode } from '../../nodes/ImageNode.jsx';
 import './ImagePlugin.css'; // Criaremos este arquivo para o estilo do modal
 
 // Suas funções de API (ajustadas para o contexto do plugin)
-const API_URL = 'http://137.131.212.103:3000/api';
+const API_URL = 'https://137.131.212.103/api';
 
 const imageUploadHandler = (token, file) => {
     return new Promise((resolve, reject) => {

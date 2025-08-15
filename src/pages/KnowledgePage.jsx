@@ -10,7 +10,7 @@ import './KnowledgePage.css';
 import CategoryDropdown from '../components/CategoryDropdown';
 
 // --- Sua lógica de API fora do componente ---
-const API_URL = 'http://137.131.212.103:3000/api';
+const API_URL = 'https://137.131.212.103/api';
 
 const fetchArticles = async ({ queryKey }) => {
   const [_key, { searchTerm, selectedCategory, currentPage }] = queryKey;

@@ -9,7 +9,7 @@ import CommentSection from './CommentSection';
 import LexicalRenderer from './LexicalRenderer';
 import './ArticlePage.css';
 
-const API_URL = 'http://137.131.212.103:3000/api';
+const API_URL = 'https://137.131.212.103/api';
 
 // Funções de busca de dados para o TanStack Query
 const fetchArticleBySlug = async (slug) => {

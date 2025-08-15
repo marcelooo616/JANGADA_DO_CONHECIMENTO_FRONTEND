@@ -4,7 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom'; // Importa o useNavigate
 
-const API_URL = 'http://137.131.212.103:3000/api';
+const API_URL = 'https://137.131.212.103/api';
 
 import './AuthForm.css';
 

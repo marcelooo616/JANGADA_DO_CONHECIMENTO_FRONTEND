@@ -5,30 +5,49 @@
   align-items: center;
   gap: 0.5rem;
   margin-top: 2rem;
+  user-select: none; /* Impede que o texto seja selecionado */
 }
 
-.pagination-container button {
+.pagination-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 0.5rem;
   background-color: var(--background-secondary);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  font-weight: 500;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.pagination-container button:hover:not(:disabled) {
+.pagination-item:hover:not(:disabled):not(.dots) {
   background-color: var(--color-accent);
+  border-color: var(--color-accent);
   color: #fff;
 }
 
-.pagination-container button.active {
+.pagination-item.active {
   background-color: var(--color-accent);
+  border-color: var(--color-accent);
   color: #fff;
   font-weight: bold;
 }
 
-.pagination-container button:disabled {
+.pagination-item.disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.pagination-item.arrow {
+  font-size: 1.2rem;
+}
+
+.pagination-item.dots {
+  background-color: transparent;
+  border: none;
+  cursor: default;
 }

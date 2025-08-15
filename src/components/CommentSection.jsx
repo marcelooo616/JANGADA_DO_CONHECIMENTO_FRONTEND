@@ -7,7 +7,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import './CommentSection.css';
 
-const API_URL = 'http://137.131.212.103:3000/api';
+const API_URL = 'https://137.131.212.103/api';
 
 // A função que envia o novo comentário para a API
 const postComment = ({ token, articleId, content }) => {

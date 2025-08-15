@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useQuery } from '@tanstack/react-query'; // Importa o hook principal
+import { useQuery, useQueryClient  } from '@tanstack/react-query'; // Importa o hook principal
 import { useAuth } from '../context/AuthContext';
+
 import NewsGrid from '../components/NewsGrid';
 import './HomePage.css';
 import ArticleCard from '../components/ArticleCard';
 import HeroJangada from '../components/HeroJangada';
 import CertificationBanner from '../components/CertificationBanner';
+import Pagination from '../components/Pagination';
+import NewsCarousel from '../components/NewsCarousel';
 
 
 const API_URL = 'https://137.131.212.103/api';
@@ -29,11 +32,14 @@ const fetchArticles = async ({ queryKey }) => {
 };
 
 // Função que busca as notícias da API externa.
-const fetchMicrosoftNews = async () => {
-  // O API_URL é sua variável de ambiente (https://137.131.212.103/api)
-  const { data } = await axios.get(`${API_URL}/news`);
+const fetchMicrosoftNews = async ({ queryKey }) => {
+  const [_key, { currentPage }] = queryKey;
+  
+  const { data } = await axios.get(`${API_URL}/news`, { params: { page: currentPage, pageSize: 6 } });
   return data;
-};
+}
+
+
 
 function HomePage() {
   const { user } = useAuth();
@@ -43,6 +49,9 @@ function HomePage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+
+   const [newsCurrentPage, setNewsCurrentPage] = useState(1);
+   const queryClient = useQueryClient();
   
   // Hook do TanStack Query para buscar e gerenciar o cache dos ARTIGOS
   const { 
@@ -55,15 +64,35 @@ function HomePage() {
     keepPreviousData: true, // Melhora a UX na paginação
   });
 
-  // Hook do TanStack Query para buscar e gerenciar o cache das NOTÍCIAS
   const { 
-      data: microsoftNews, 
-      isLoading: newsLoading 
+    data: newsData, 
+    isLoading: newsLoading,
+    error: newsError // <<-- ADICIONADO AQUI
   } = useQuery({
-    queryKey: ['microsoftNews'],
+    queryKey: ['microsoftNews', { currentPage: newsCurrentPage }],
     queryFn: fetchMicrosoftNews,
-    staleTime: 1000 * 60 * 30 // Considera os dados "novos" por 30 minutos
+    staleTime: 1000 * 60 * 30,
+    keepPreviousData: true,
   });
+
+   useEffect(() => {
+    // Se não houver dados ou se já estivermos na última página, não faz nada
+    if (!newsData || newsCurrentPage >= (newsData.totalPages || 10)) {
+      return;
+    }
+
+    // Cria a "chave" da próxima página de notícias
+    const nextPageQueryKey = ['microsoftNews', { currentPage: newsCurrentPage + 1 }];
+    
+    // Dispara a pré-busca para a próxima página
+    queryClient.prefetchQuery({
+        queryKey: nextPageQueryKey,
+        queryFn: fetchMicrosoftNews
+    });
+
+  }, [newsData, newsCurrentPage, queryClient]); 
+  // Hook do TanStack Query para buscar e gerenciar o cache das NOTÍCIAS
+   
 
   // Efeito que busca as categorias para a sidebar (roda apenas uma vez)
   useEffect(() => {
@@ -81,7 +110,15 @@ function HomePage() {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
+    const handleNewsPageChange = (page) => {
+    setNewsCurrentPage(page);
+  };
 
+   console.log('Status da busca de notícias:', { 
+    isLoading: newsLoading, 
+    error: newsError, 
+    data: newsData 
+  });
   // Combina os estados de carregamento
   const isLoading = articlesLoading || newsLoading;
 
@@ -150,7 +187,14 @@ function HomePage() {
         )}
         
         {/* Usamos 'microsoftNews' que também vem do seu próprio useQuery */}
-        {microsoftNews && <NewsGrid news={microsoftNews} />}
+           {newsData?.news && (
+              <NewsCarousel
+                news={newsData.news}
+                currentPage={newsCurrentPage}
+                totalPages={newsData.totalPages}
+                onPageChange={handleNewsPageChange}
+              />
+            )}
         <div className='box_certificate'>
           <CertificationBanner/>
         </div>
