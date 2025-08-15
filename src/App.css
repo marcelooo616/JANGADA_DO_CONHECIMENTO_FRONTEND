@@ -1,0 +1,124 @@
+/* src/App.css */
+
+.container { 
+  width: 100%; 
+  max-width: 400px; 
+  text-align: center; 
+  margin: 50px auto;
+  flex-grow: 1; /* <<-- ADICIONE ESTA LINHA */
+  display: flex; /* Adicione estas 3 linhas para centralizar verticalmente */
+  flex-direction: column;
+  justify-content: center;
+}
+.login-form { 
+  background: var(--background-secondary); /* Usa variável */
+  padding: 2rem; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+  border: 1px solid var(--border-color); /* Usa variável */
+}
+
+.form-group { 
+  margin-bottom: 1rem; 
+  text-align: left; 
+}
+
+.form-group label { 
+  display: block; 
+  margin-bottom: 0.5rem; 
+  color: var(--text-secondary); /* Usa variável */
+}
+
+.form-group input { 
+  width: 100%; 
+  padding: 0.75rem; 
+  border: 1px solid var(--border-color); /* Usa variável */
+  border-radius: 4px; 
+  box-sizing: border-box;
+  background-color: var(--background-primary); /* Usa variável */
+  color: var(--text-primary); /* Usa variável */
+}
+
+button { 
+  width: 100%; 
+  padding: 0.75rem; 
+  background-color: var(--color-accent); /* Usa variável */
+  color: white; 
+  border: none; 
+  border-radius: 4px; 
+  font-size: 1rem; 
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover { 
+  background-color: var(--color-accent-hover); /* Usa variável */
+}
+
+.result-success { 
+  margin-top: 1rem; 
+  padding: 1rem; 
+  border-radius: 4px; 
+  background-color: #e9f7ef; 
+  border: 1px solid #a8d5ba; 
+  color: #1d6c48;
+}
+
+.nav{
+  padding: 25px;
+}
+
+.result-error { 
+  margin-top: 1rem; 
+  padding: 1rem; 
+  border-radius: 4px; 
+  background-color: #fce8e6; 
+  border: 1px solid #f2b2ac; 
+  color: #c52920;
+}
+
+textarea { 
+  width: 100%; 
+  height: 100px; 
+  margin-top: 0.5rem; 
+  word-break: break-all; 
+  font-size: 0.8rem;
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+a {
+  color: var(--color-accent);
+}
+
+/* Adicione estas regras ao seu src/App.css */
+
+.login-form h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+/* Adiciona uma borda azul sutil quando o usuário clica no campo */
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* Estilo para o botão quando ele está desabilitado */
+button:disabled {
+  background-color: var(--color-accent-hover);
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Estilo para o link "Cadastre-se aqui" */
+.container p a {
+  font-weight: bold;
+  text-decoration: none;
+}
+.container p a:hover {
+  text-decoration: underline;
+}

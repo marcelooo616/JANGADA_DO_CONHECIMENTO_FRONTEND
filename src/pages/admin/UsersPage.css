@@ -1,0 +1,149 @@
+/* Reutiliza o estilo do container e do header de CategoriesPage.css */
+@import url('../CategoriesPage.css');
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th, .users-table td {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color, #4a5568);
+}
+
+.users-table thead th {
+  background-color: rgba(255, 255, 255, 0.05);
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+}
+
+.users-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* --- Badge de Status (Ativo/Inativo) --- */
+.status-badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 99px; /* Formato de pílula */
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.status-badge.status-active {
+  background-color: rgba(46, 204, 113, 0.2);
+  color: #2ecc71; /* Verde */
+}
+
+.status-badge.status-inactive {
+  background-color: rgba(231, 76, 60, 0.2);
+  color: #e74c3c; /* Vermelho */
+  
+}
+
+/* --- Botão de Ação Ativar/Desativar --- */
+.toggle-active-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  color: #fff;
+  min-width: 120px;
+
+  
+}
+
+.toggle-active-btn:hover:not(:disabled) {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Cor verde para o botão "Ativar" */
+.toggle-active-btn.toggle-active-btn--activate {
+  background-color: #27ae60;
+}
+
+/* Cor laranja/vermelho para o botão "Desativar" */
+.toggle-active-btn.toggle-active-btn--deactivate {
+  background-color: #f39c12;
+}
+
+/* Adicione este código ao final do arquivo UsersPage.css */
+
+/* --- Estilos para o Modal de Edição de Role --- */
+
+.modal-content.edit-role-modal p {
+  color: var(--text-secondary);
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-content.edit-role-modal p strong {
+  color: var(--text-primary);
+  font-weight: bold;
+}
+
+/* Estilo para a dropdown (select) de cargos */
+#role-select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color, #4a5568);
+  border-radius: 8px;
+  color: var(--text-primary, #e2e8f0);
+  font-size: 1rem;
+}
+
+#role-select:focus {
+  outline: none;
+  border-color: var(--color-accent, #646cff);
+}
+/* ... (outros estilos da página) ... */
+
+.table-container {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color, #4a5568);
+  border-radius: 12px;
+  overflow-x: auto; /* Adiciona scroll horizontal em telas muito pequenas */
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  /* --- MUDANÇA PRINCIPAL --- */
+  table-layout: fixed; /* Trava o algoritmo de layout da tabela */
+}
+
+.users-table th, .users-table td {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color, #4a5568);
+  
+  /* --- NOVO: Controle de texto longo --- */
+  white-space: nowrap;      /* Impede que o texto quebre a linha */
+  overflow: hidden;         /* Esconde o texto que transborda */
+  text-overflow: ellipsis;  /* Adiciona "..." ao final do texto cortado */
+}
+
+.users-table thead th {
+  background-color: rgba(255, 255, 255, 0.05);
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  white-space: normal; /* Permite que os títulos do cabeçalho quebrem a linha se necessário */
+}
+
+/* --- NOVO: Definindo a largura de cada coluna --- */
+.users-table th:nth-child(1) { width: 25%; } /* Nome Completo */
+.users-table th:nth-child(2) { width: 30%; } /* Email */
+.users-table th:nth-child(3) { width: 10%; } /* Role */
+.users-table th:nth-child(4) { width: 15%; } /* Status */
+.users-table th:nth-child(5) { width: 20%; } /* Ações */
+
+
+.users-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ... (resto das suas classes como .status-badge e .actions-cell) ... */

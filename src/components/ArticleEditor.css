@@ -1,0 +1,153 @@
+/* src/pages/ArticleEditor.css */
+
+/* --- Layout Principal --- */
+.editor-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px; /* Coluna principal flexível e sidebar fixa */
+  grid-template-rows: auto 1fr; /* Header com altura automática e o resto ocupa o espaço */
+  grid-template-areas:
+    "header sidebar"
+    "main sidebar";
+  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 80px); /* Ocupa a altura da tela menos a navbar */
+}
+
+/* --- Cabeçalho --- */
+.editor-header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color, #4a5568);
+}
+
+.editor-header h1 {
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  font-size: 1.75rem;
+  color: var(--text-primary, #e2e8f0);
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* --- Área de Edição Principal --- */
+.editor-main {
+  grid-area: main;
+  /* O estilo do editor em si vem do SimpleLexicalEditor.css, 
+     aqui garantimos que ele se encaixe bem no layout. */
+}
+
+
+/* --- Barra Lateral (Sidebar) --- */
+.editor-sidebar {
+  grid-area: sidebar;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color, #4a5568);
+  border-radius: 12px;
+  padding: 1.5rem;
+  height: fit-content; /* Faz a sidebar ter a altura do seu conteúdo */
+  position: sticky;
+  top: 100px; /* Distância do topo para ficar fixo ao rolar */
+}
+
+.sidebar-section h3 {
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  font-size: 1.1rem;
+  color: var(--text-primary, #e2e8f0);
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color, #4a5568);
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary, #a0aec0);
+  margin-bottom: 0.5rem;
+}
+
+/* Estilo para os inputs de texto */
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color, #4a5568);
+  border-radius: 8px;
+  color: var(--text-primary, #e2e8f0);
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input[type="text"]:focus {
+  outline: none;
+  border-color: var(--color-accent, #646cff);
+  box-shadow: 0 0 10px rgba(100, 108, 255, 0.3);
+}
+
+/* --- Botões de Ação --- */
+.btn-save-article, .btn-cancel {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-save-article {
+  background-color: var(--color-accent, #646cff);
+  color: #fff;
+}
+.btn-save-article:hover:not(:disabled) {
+  background-color: var(--color-accent-hover, #535bf2);
+}
+.btn-save-article:disabled {
+  background-color: #333;
+  color: #777;
+  cursor: not-allowed;
+}
+
+.btn-cancel {
+  background-color: transparent;
+  color: var(--text-secondary, #a0aec0);
+  border-color: var(--border-color, #4a5568);
+}
+.btn-cancel:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary, #e2e8f0);
+}
+
+/* --- Media Query para Telas Menores --- */
+@media (max-width: 900px) {
+  .editor-layout {
+    grid-template-columns: 1fr; /* Uma única coluna */
+    grid-template-areas:
+      "header"
+      "sidebar" /* Coloca a sidebar abaixo do header */
+      "main";   /* E o editor principal por último */
+    padding: 1rem;
+  }
+
+  .editor-sidebar {
+    position: static; /* Remove o 'sticky' em telas menores */
+    top: auto;
+  }
+}

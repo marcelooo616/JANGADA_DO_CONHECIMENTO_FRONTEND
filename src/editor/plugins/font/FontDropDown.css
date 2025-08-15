@@ -1,0 +1,76 @@
+/* src/editor/plugins/FontDropDown.css */
+
+.toolbar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  color: var(--text-secondary, #a0aec0);
+  cursor: pointer;
+  min-width: 120px;
+  justify-content: space-between;
+  font-family: var(--font-body); /* Garante que o texto do botão use a fonte padrão */
+}
+.toolbar-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.chevron-down {
+  border: solid var(--text-secondary, #a0aec0);
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 15px);
+  background-color: #1a1a1a;
+  border: 1px solid var(--border-color, #4a5568);
+  border-radius: 8px;
+  padding: 0.5rem;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: rgba(28, 28, 28, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.dropdown .item {
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  color: var(--text-secondary, #a0aec0);
+  cursor: pointer;
+  text-align: left ;
+}
+
+
+.dropdown .item:hover {
+  background-color: var(--color-accent, #646cff);
+  color: #fff;
+}
+/* Nova regra para o container da dropdown */
+.dropdown-wrapper {
+  font-size: 5px !important;
+  border-radius: 10px;
+  
+  
+  position: relative;
+  display: inline-block; /* Garante que o container tenha o tamanho do botão */
+}
+
+.text{
+  font-size: 12px;
+}
+
+
+

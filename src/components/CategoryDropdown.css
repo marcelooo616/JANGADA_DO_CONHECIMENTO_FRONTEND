@@ -1,0 +1,82 @@
+.custom-dropdown {
+  position: relative;
+  width: 220px; /* Largura da dropdown */
+  font-size: 1rem;
+}
+
+.dropdown-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color, #4a5568);
+  border-radius: 8px;
+  color: var(--text-primary, #e2e8f0);
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.dropdown-trigger:hover {
+  border-color: var(--color-accent, #646cff);
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.arrow-icon.open {
+  transform: rotate(180deg);
+}
+
+.dropdown-options {
+  position: absolute;
+  top: calc(100% + 8px); /* Posição abaixo do botão, com um respiro */
+  left: 0;
+  right: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem;
+  background-color: #1a1a1a;
+  border: 1px solid var(--border-color, #4a5568);
+  border-radius: 8px;
+  z-index: 10;
+  max-height: 250px;
+  overflow-y: auto;
+
+  /* Efeito de vidro e animação de entrada */
+  background: rgba(28, 28, 28, 0.8);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.dropdown-option {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: var(--text-secondary, #a0aec0);
+}
+
+.dropdown-option:hover {
+  background-color: var(--color-accent, #646cff);
+  color: #fff;
+}
+
+.dropdown-option.selected {
+  background-color: rgba(100, 108, 255, 0.2); /* Fundo sutil para o item selecionado */
+  color: var(--text-primary, #e2e8f0);
+  font-weight: 500;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

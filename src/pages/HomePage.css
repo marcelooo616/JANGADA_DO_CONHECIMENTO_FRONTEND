@@ -1,0 +1,159 @@
+/* src/pages/HomePage.css */
+
+
+
+.loading-message, .error-message {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-top: 3rem;
+}
+
+/* Adicione no topo de src/pages/HomePage.css */
+.filters-container {
+  background-color: var(--background-secondary);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  border: 1px solid var(--border-color);
+}
+
+.filters-container input, .filters-container select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.search-input {
+  flex-grow: 2; /* Faz o campo de busca ser maior */
+}
+
+.category-select {
+  flex-grow: 1;
+}
+/* src/pages/HomePage.css */
+.knowledge-dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Sidebar com largura automática, conteúdo principal preenche o resto */
+  /* Altura total da tela menos a altura aproximada do Navbar (ajuste se necessário) */
+ 
+}
+
+.knowledge-main {
+  width: 100%;
+  
+  overflow-y: auto; /* Adiciona scroll se o conteúdo for grande */
+}
+
+.box_certificate{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.article-list {
+  display: grid;
+  /* Cria colunas responsivas: elas terão no mínimo 300px, 
+     e o grid tentará encaixar o máximo possível por linha. */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem; /* Espaço entre os cards */
+  padding: 2rem 3rem;
+  width: 100%;
+  width: 100%;/* adiciona scroll só quando precisar */
+  
+}
+.article-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.article-list::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.article-list::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+
+.loading-message, .error-message {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 3rem;
+}
+
+
+/* Estilos para o Cabeçalho da Seção de Artigos */
+
+.section-header {
+  width: 100%;
+  max-width: 1200px; /* Alinha com o grid de artigos */
+  margin-bottom: 3rem; /* Espaço generoso entre o título e os cards */
+  padding-left: 2rem; /* Espaço para a linha decorativa */
+  position: relative;
+  
+   /* Necessário para o posicionamento da linha */
+}
+
+/* A linha decorativa vertical */
+.section-header::before {
+  content: ''; /* Essencial para pseudo-elementos */
+  position: absolute;
+  left: 0;
+  top: 5px; /* Alinha com o topo do texto */
+  bottom: 5px; /* Alinha com a base do texto */
+  width: 4px;
+  background: #0099ff; /* Usa a cor de destaque do tema */
+  border-radius: 2px;
+  
+  
+}
+
+.section-title {
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  font-size: clamp(2rem, 5vw, 2.75rem); /* Título grande e responsivo */
+  font-weight: 700;
+  color: var(--text-primary, #e2e8f0);
+  margin: 0;
+  line-height: 1.2;
+  
+}
+
+.section-subtitle {
+  
+  font-size: 1.1rem;
+  color: var(--text-secondary, #a0aec0);
+  margin: 0.5rem 0 0;
+  max-width: 600px; /* Evita que o subtítulo fique muito largo */
+}
+
+/* Estilos para a seção principal de artigos */
+.articles-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o header e o grid */
+    padding: 4rem 1rem;
+}
+
+section{
+  padding: 2rem 3rem;
+}

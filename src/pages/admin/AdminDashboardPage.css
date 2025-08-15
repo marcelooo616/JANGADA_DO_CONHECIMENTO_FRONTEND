@@ -1,0 +1,95 @@
+/* src/pages/admin/AdminDashboardPage.css */
+
+.admin-dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* Espaço entre as seções */
+}
+
+.dashboard-header {
+  border-bottom: 1px solid var(--border-color, #4a5568);
+  padding-bottom: 2rem;
+}
+
+.dashboard-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem;
+}
+
+.dashboard-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0;
+}
+
+/* --- Grid de Estatísticas --- */
+.stat-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color, #4a5568);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+
+/* --- Grid de Ações Rápidas --- */
+.action-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.action-card {
+  display: block;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color, #4a5568);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.action-card:hover {
+  border-color: var(--color-accent, #646cff);
+  transform: translateY(-5px);
+}
+
+.action-card-icon {
+  font-size: 2rem;
+  color: var(--color-accent, #646cff);
+  margin-bottom: 1rem;
+}
+
+.action-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem;
+}
+
+.action-card-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}

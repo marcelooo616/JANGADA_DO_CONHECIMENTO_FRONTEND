@@ -1,0 +1,22 @@
+/* src/components/ThemeToggle.css */
+
+.theme-toggle-btn {
+  background: none;
+  border: 1px solid transparent; /* Borda transparente por padrão */
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 100%; /* Faz o botão ficar redondo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  width: 10%;
+  
+}
+
+.theme-toggle-btn:hover {
+  background: var(--background-primary);
+  color: var(--color-accent);
+  border-color: var(--border-color);
+}

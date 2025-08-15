@@ -1,0 +1,228 @@
+/* Overlay que cobre a tela inteira */
+.image-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* A caixa do modal */
+.image-modal {
+  background: #1e1e1e;
+  border: 1px solid var(--border-color, #4a5568);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  color: var(--text-primary, #e2e8f0);
+}
+
+.image-modal h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-divider {
+  text-align: center;
+  color: var(--text-secondary);
+  margin: 1.5rem 0;
+}
+
+.modal-button {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: var(--color-accent, #646cff);
+  color: #fff;
+}
+.modal-button.upload-button {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+/* src/editor/plugins/ImagePlugin.css */
+
+/* --- O Fundo (Overlay) --- */
+.insert-image-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeInOverlay 0.2s ease-out;
+}
+
+/* --- A Caixa do Modal --- */
+.insert-image-modal {
+  background: #1e1e1e;
+  border: 1px solid var(--border-color, #4a5568);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  animation: scaleInModal 0.3s ease-out;
+}
+
+/* --- Cabeçalho do Modal --- */
+.insert-image-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color, #4a5568);
+}
+
+.insert-image-title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--text-primary);
+}
+
+.insert-image-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+/* --- Corpo do Modal --- */
+.insert-image-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- Opções de Upload e URL --- */
+.insert-image-option {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.insert-image-option label {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* Área de Upload */
+.insert-image-upload-area {
+  border: 2px dashed var(--border-color, #4a5568);
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.insert-image-upload-area:hover {
+  border-color: var(--color-accent, #646cff);
+  background-color: rgba(100, 108, 255, 0.1);
+}
+
+.insert-image-upload-area i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--color-accent, #646cff);
+}
+.insert-image-upload-area span {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.insert-image-upload-area small {
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+
+/* Grupo de Input de URL */
+.insert-image-url-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.insert-image-url-group input {
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color, #4a5568);
+  border-radius: 8px;
+  color: var(--text-primary, #e2e8f0);
+  font-size: 1rem;
+}
+
+.insert-image-url-btn {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--color-accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+
+/* Divisor "OU" */
+.insert-image-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--text-secondary);
+}
+.insert-image-divider::before,
+.insert-image-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-color, #4a5568);
+}
+.insert-image-divider span {
+  padding: 0 1rem;
+}
+
+
+/* --- Animações --- */
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleInModal {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

@@ -1,0 +1,122 @@
+/* 1. VARIÁVEIS GLOBAIS E CONFIGURAÇÕES DE FONTE DO :root */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;700&family=Lato:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Merriweather:wght@400;700&family=Montserrat:wght@400;700;800&family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Configurações de fonte originais */
+  font-family: 'Lora', serif;
+  align-items: center;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Suas Variáveis de Tema (Modo Escuro Fixo) */
+  --code-color-light: #ffffff;
+  --code-color-dark: #313131;
+  --background-primary: #000000;
+  --background-secondary: #2d3748;
+  --text-primary: #e2e8f0;
+  --text-secondary: #a0aec0;
+  --color-accent: #0099ff;
+  --color-accent-hover: #535bf2;
+  --border-color: #4a5568;
+
+  /* Variável para a cor do grid no modo escuro */
+  --grid-color: rgba(255, 255, 255, 0.05); 
+}
+
+
+/* 2. RESET E CONFIGURAÇÕES GLOBAIS DO BODY */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  min-height: 100vh;
+  min-width: 320px;
+  
+
+  /* Sua stack de fontes original para o body */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  
+  /* Usando suas variáveis para aplicar os estilos */
+  color: var(--text-primary);
+  background-color: var(--background-primary);
+}
+
+
+/* 3. GRID DE FUNDO GLOBAL */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  
+  background-image:
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 80px 80px;
+
+  z-index: -1;
+}
+
+
+/* 4. ESTILOS DE ELEMENTOS (com suas fontes) */
+#root {
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  width: 100%;
+  
+}
+
+h1, h2, h3, h4, h5, h6 {
+  /* Sua fonte original para títulos */
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+a {
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit; /* Herda a fonte do body, como no original */
+  cursor: pointer;
+  transition: border-color 0.25s;
+  background-color: #1a1a1a;
+  color: var(--text-primary);
+}
+button:hover {
+  border-color: var(--color-accent);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}

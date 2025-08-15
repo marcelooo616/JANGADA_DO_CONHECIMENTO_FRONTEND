@@ -1,0 +1,183 @@
+/* Estilos para o componente HeroJangada */
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 1rem; /* Aumenta o espaçamento vertical */
+  min-height: 70vh; /* Garante uma boa altura na tela */
+  text-align: center;
+  width: 100%;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem; /* Adiciona um espaço base entre os elementos filhos */
+  max-width: 800px; /* Limita a largura do conteúdo para melhor leitura */
+}
+
+.hero-title {
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  /* Fonte responsiva que se ajusta ao tamanho da tela */
+  font-size: clamp(2.5rem, 6vw, 4.5rem); 
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em; /* Deixa o texto grande mais coeso */
+  margin: 0;
+  color: var(--text-primary, #e2e8f0);
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  max-width: 650px; /* Limita a largura do parágrafo */
+  color: var(--text-secondary, #a0aec0); /* Cor mais suave para contraste */
+  margin: 0;
+}
+
+.hero-subtitle strong {
+  color: var(--text-primary, #e2e8f0);
+  font-weight: 600;
+}
+
+.hero-cta-buttons {
+  display: flex; /* Permite que os botões quebrem a linha em telas pequenas */
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem; /* Espaço extra acima dos botões */
+}
+/* Estilo do Botão Primário (Destaque) */
+.cta-primary {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit; /* Herda a fonte do body, como no original */
+  cursor: pointer;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+ background-color: #3498db; /* Azul vibrante */
+ color: #fff; /* Texto branco para contraste */
+ border: 2px solid #3498db; /* Borda na mesma cor */
+ font-weight: 700;
+ transform: scale(1.0);
+ transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Adicionada transição para a box-shadow */
+ box-shadow: 0 20px 140px rgba(52, 152, 219, 1); /* Sombra inicial sutil */
+}
+
+.cta-primary:hover {
+ transform: scale(1.05);
+ box-shadow: 0 0 80px rgba(52, 152, 219, 0.9); /* Sombra mais intensa no hover */
+ background-color: #2980b9; /* Um tom mais escuro de azul no hover */
+ border-color: #2980b9;
+  color: #fff;
+}
+
+/* Estilo do Botão Primário (Destaque) */
+
+
+/* Estilo do Botão Secundário (Contorno) */
+.cta-secondary {
+
+
+
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid var(--border-color, #4a5568);
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease;
+}
+
+.cta-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+
+
+.hero-extra-info {
+  margin-top: 2rem; /* Mais espaço para destacar a informação */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px; /* Formato de "pílula" */
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary, #a0aec0);
+}
+
+.hero-extra-info svg {
+  color: var(--color-accent, #646cff);
+}
+
+/* src/components/HeroJangada.css */
+
+/* ... outros estilos do .hero-container, .hero-content, etc. ... */
+
+.background-logo {
+  position: absolute; /* Permite posicionamento livre dentro do .hero-container */
+  /* Deixa os logos bem sutis */
+width: 25%; /* Tamanho inicial dos logos */
+  height: auto;
+  z-index: 0; /* Garante que fiquem atrás do conteúdo principal */
+  pointer-events: none; /* Evita que os logos interceptem cliques */
+}
+
+/* Posições específicas para cada logo (você pode ajustar esses valores) */
+.windows-logo {
+filter: drop-shadow(0 0 200px var(--color-accent)) !important;
+  top: 12%;
+  left: 65%;
+ 
+ animation: floatAndDistort 10s infinite alternate ease-in-out; /* Aplica a animação */
+ transform-origin: center; /* Define o centro para as transformações */
+}
+
+@keyframes floatAndDistort {
+ 0% {
+ transform: translateY(0) rotate(0deg);
+ filter: blur(0px);
+ opacity: 0.7;
+ }
+ 50% {
+ transform: translateY(-10px) rotate(5deg) scale(1.05);
+ filter: blur(2px); /* Adiciona um leve desfoque no meio */
+ opacity: 0.8;
+ }
+ 100% {
+ transform: translateY(0) rotate(0deg);
+ filter: blur(0px);
+ opacity: 1;
+ }
+}
+
+.office-logo {
+  top: 3%;
+  left: 5%;
+  width: 25%;
+  animation: floatAndDistort 10s infinite alternate ease-in-out; /* Aplica a animação /
+  transform-origin: center;
+  / Tente esta pequena modificação */
+  filter: drop-shadow(0 0 200px #eb3b00) !important;
+}
+
+
+.azure-logo {
+ top: 8%;
+ left: 26%;
+ width: 120px;
+  transform: rotate(15deg)
+
+}
+
+
+
+/* Adicione mais estilos para outros logos conforme necessário */

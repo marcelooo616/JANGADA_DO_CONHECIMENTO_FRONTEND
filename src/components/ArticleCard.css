@@ -1,0 +1,66 @@
+/* Estilos para ArticleCard.css */
+
+.article-card {
+  /* Efeito de vidro e fundo */
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  /* Borda sutil */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  height: 200px;
+  
+  /* Estrutura e Sombra */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Garante que o conteúdo respeite o border-radius */
+  
+  /* Interatividade */
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  
+}
+
+.article-card:hover {
+  border-color: rgba(255, 255, 255, 0.5); /* Borda fica mais clara */
+  transform: translateY(-5px); /* Efeito de elevação */
+}
+
+.card-content {
+  padding: 1.5rem; /* Espaçamento interno */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Faz o conteúdo ocupar todo o espaço disponível */
+  justify-content: space-between; /* Empurra o título para cima e meta para baixo */
+  gap: 1rem;
+}
+
+.card-title {
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary, #e2e8f0);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.card-meta {
+  display: flex;
+  flex-direction: column; /* Empilha autor e categoria */
+  gap: 0.5rem; /* Espaço entre autor e categoria */
+  font-size: 0.875rem;
+  color: var(--text-secondary, #a0aec0);
+}
+
+.card-author,
+.card-category {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espaço entre ícone e texto */
+}
+
+/* Estilo para os ícones */
+.card-meta i {
+  color: var(--color-accent, #646cff);
+  font-size: 0.8rem;
+}

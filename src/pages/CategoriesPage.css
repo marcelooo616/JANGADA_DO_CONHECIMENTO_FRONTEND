@@ -1,0 +1,134 @@
+.admin-page-container {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 70vh;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.add-new-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--color-accent, #646cff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.add-new-btn:hover { background-color: var(--color-accent-hover, #535bf2); }
+
+
+.table-container {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color, #4a5568);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.categories-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.categories-table th, .categories-table td {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color, #4a5568);
+}
+
+.categories-table thead th {
+  background-color: rgba(255, 255, 255, 0.05);
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+}
+
+.categories-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 1rem;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.2s, transform 0.2s;
+}
+.action-btn:hover { transform: scale(1.1); }
+.action-btn.edit-btn:hover { color: var(--color-accent); }
+.action-btn.delete-btn:hover { color: #e74c3c; }
+
+
+/* Estilos do Modal (reaproveitando/adaptando o que já fizemos) */
+.modal-overlay {
+  position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px); display: flex; justify-content: center;
+  align-items: center; z-index: 2000;
+}
+.modal-content {
+  background: #1e1e1e; border: 1px solid var(--border-color);
+  border-radius: 12px; padding: 2rem; width: 100%; max-width: 400px;
+}
+.modal-content h3 { margin-top: 0; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem; }
+
+/* Adicione este código ao final do arquivo CategoriesPage.css */
+
+/* --- Estilos para o Modal de Confirmação --- */
+
+.modal-content.confirm-modal p {
+  line-height: 1.6;
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 1rem 0 2rem;
+}
+
+.modal-content.confirm-modal p strong {
+  color: var(--text-primary);
+  font-weight: bold;
+}
+
+/* Botão de confirmação de exclusão */
+.btn-delete-confirm {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  /* Cor vermelha para indicar uma ação destrutiva */
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.btn-delete-confirm:hover:not(:disabled) {
+  background-color: #c0392b;
+}
+
+.btn-delete-confirm:disabled {
+    background-color: #333;
+    color: #777;
+    cursor: not-allowed;
+}
+
+.section-header{
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.section-header button{
+    width: 17%;
+}
