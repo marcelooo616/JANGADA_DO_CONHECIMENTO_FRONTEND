@@ -14,7 +14,7 @@ import Footer from '../components/Footer';
 import CertificationBanner from '../components/CertificationBanner';
 
 
-const API_URL = 'http://137.131.212.103:3000/api';
+const API_URL = 'https://137.131.212.103/api';
 const NEWS_API_KEY = "1e8f2b8f70f849aeb216d4f97f814822";
 
 // Função que busca os artigos da NOSSA API. Ela fica fora do componente.
