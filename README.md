@@ -94,6 +94,4 @@ Para produção, esta variável deve ser configurada no painel da Vercel com a U
 
 Este projeto está configurado para deploy contínuo na Vercel. Qualquer push na branch main irá automaticamente disparar um novo build e deploy da aplicação.
 
----
 
-Sinta-se à vontade para ajustar qualquer parte do texto conforme necessário!
