@@ -48,6 +48,7 @@ export default function UsersPage() {
     queryKey: ['roles'],
     queryFn: () => fetchRoles(token),
     enabled: !!token,
+    staleTime: 1000 * 60 * 10, // 10 minutos em milissegundos
   });
 
   // Mutação para atualizar o usuário (ativar/desativar ou mudar role)

@@ -48,6 +48,7 @@ const KnowledgePage = () => {
     // ===================================
     queryFn: fetchArticles,
     keepPreviousData: true,
+    staleTime: 1000 * 60 * 5,
   });
 
   useEffect(() => {
