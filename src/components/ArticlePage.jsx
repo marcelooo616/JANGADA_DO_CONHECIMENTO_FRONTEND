@@ -1,7 +1,7 @@
 // src/pages/ArticlePage.jsx
 
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import apiClient from '../api/axiosConfig'; 
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
@@ -9,11 +9,11 @@ import CommentSection from './CommentSection';
 import LexicalRenderer from './LexicalRenderer';
 import './ArticlePage.css';
 
-const API_URL = 'https://137.131.212.103/api';
+
 
 // Funções de busca de dados para o TanStack Query
 const fetchArticleBySlug = async (slug) => {
-  const { data } = await axios.get(`${API_URL}/articles/${slug}`);
+  const { data } = await apiClient.get(`/articles/${slug}`);
  
   return data;
 };
@@ -21,12 +21,12 @@ const fetchArticleBySlug = async (slug) => {
 
 
 const fetchComments = async (articleId) => {
-  const { data } = await axios.get(`${API_URL}/comments/article/${articleId}`);
+  const { data } = await apiClient.get(`/comments/article/${articleId}`);
   return data;
 };
 
 const deleteArticle = ({ token, id }) => {
-    return axios.delete(`${API_URL}/articles/${id}`, {
+    return apiClient.delete(`/articles/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
     });
 };

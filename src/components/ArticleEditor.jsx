@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
+import apiClient from '../api/axiosConfig'; 
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import CustomSelect from '../components/CustomSelect';
@@ -10,36 +10,26 @@ import { SimpleLexicalEditor } from '../editor/SimpleLexicalEditor.jsx';
 import '../editor/SimpleLexicalEditor.css';
 
 
-
-
-
-const API_URL = 'https://137.131.212.103/api';
-
-
-// --- Funções de API (fora do componente) ---
-
-
-// Busca um artigo pelo seu ID (para o modo de edição)
 const fetchArticleById = async (id) => {
   // Nota: Garanta que esta rota 'GET /api/articles/id/:id' existe no seu back-end.
-  const { data } = await axios.get(`${API_URL}/articles/id/${id}`);
+  const { data } = await apiClient.get(`/articles/id/${id}`);
   return data;
 };
 
 // Busca todas as categorias para o dropdown
 const fetchCategories = async () => {
-    const { data } = await axios.get(`${API_URL}/categories`);
+    const { data } = await apiClient.get(`/categories`);
     return data;
 };
 
 // Salva o artigo (cria um novo ou atualiza um existente)
 const saveArticle = ({ article, token, isEditing }) => {
     if (isEditing) {
-        return axios.put(`${API_URL}/articles/${article.id}`, article, {
+        return apiClient.put(`/articles/${article.id}`, article, {
             headers: { Authorization: `Bearer ${token}` }
         });
     }
-    return axios.post(`${API_URL}/articles`, article, {
+    return apiClient.post(`/articles`, article, {
         headers: { Authorization: `Bearer ${token}` }
     });
 };
@@ -50,7 +40,7 @@ const imageUploadHandler = (token) => async (blobInfo) => {
         const formData = new FormData();
         formData.append('file', blobInfo.blob(), blobInfo.filename());
 
-        axios.post(`${API_URL}/upload-image`, formData, {
+        apiClient.post(`/upload-image`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${token}`

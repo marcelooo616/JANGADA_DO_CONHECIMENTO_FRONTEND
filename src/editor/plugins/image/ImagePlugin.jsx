@@ -1,21 +1,21 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { createCommand, $getSelection, $isRangeSelection } from 'lexical';
 import { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
+import apiClient from '../../../api/axiosConfig.js'; 
 import { toast } from 'react-toastify'; // Usaremos para feedback de upload
 import { useAuth } from '../../../context/AuthContext'; // Importa o useAuth para pegar o token
 import { $createImageNode } from '../../nodes/ImageNode.jsx';
 import './ImagePlugin.css'; // Criaremos este arquivo para o estilo do modal
 
-// Suas funções de API (ajustadas para o contexto do plugin)
-const API_URL = 'https://137.131.212.103/api';
+
+
 
 const imageUploadHandler = (token, file) => {
     return new Promise((resolve, reject) => {
         const formData = new FormData();
         formData.append('file', file, file.name);
 
-        axios.post(`${API_URL}/upload-image`, formData, {
+        apiClient.post(`/upload-image`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${token}`

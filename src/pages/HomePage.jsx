@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+
+import apiClient from '../api/axiosConfig'; 
 import { useQuery, useQueryClient  } from '@tanstack/react-query'; // Importa o hook principal
 import { useAuth } from '../context/AuthContext';
 
@@ -13,7 +14,6 @@ import Pagination from '../components/Pagination';
 import NewsCarousel from '../components/NewsCarousel';
 
 
-const API_URL = 'https://137.131.212.103/api';
 
 
 // Função que busca os artigos da NOSSA API. Ela fica fora do componente.
@@ -27,7 +27,7 @@ const fetchArticles = async ({ queryKey }) => {
   params.append('page', currentPage);
   params.append('limit', 5);
 
-  const { data } = await axios.get(`${API_URL}/articles`, { params });
+  const { data } = await apiClient.get(`/articles`, { params });
   return data;
 };
 
@@ -35,7 +35,7 @@ const fetchArticles = async ({ queryKey }) => {
 const fetchMicrosoftNews = async ({ queryKey }) => {
   const [_key, { currentPage }] = queryKey;
   
-  const { data } = await axios.get(`${API_URL}/news`, { params: { page: currentPage, pageSize: 6 } });
+  const { data } = await apiClient.get(`/news`, { params: { page: currentPage, pageSize: 6 } });
   return data;
 }
 
@@ -98,7 +98,7 @@ function HomePage() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(`${API_URL}/categories`);
+        const response = await apiClient.get(`/categories`);
         setCategories(response.data);
       } catch (err) {
         console.error("Erro ao buscar categorias", err);

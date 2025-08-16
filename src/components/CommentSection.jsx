@@ -7,12 +7,12 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import './CommentSection.css';
 
-const API_URL = 'https://137.131.212.103/api';
+
 
 // A função que envia o novo comentário para a API
 const postComment = ({ token, articleId, content }) => {
   return axios.post(
-    `${API_URL}/comments`,
+    `/comments`,
     { articleId, content },
     { headers: { Authorization: `Bearer ${token}` } }
   );

@@ -1,35 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import apiClient from '../api/axiosConfig'; 
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import './CategoriesPage.css';
 
-// --- Funções de API ---
-const API_URL = 'https://137.131.212.103/api';
+
+
 
 const fetchCategories = async () => {
-  const { data } = await axios.get(`${API_URL}/categories`);
+  const { data } = await apiClient.get(`/categories`);
   return data;
 };
 
 // Validação: Verifica se a categoria tem artigos
 const checkCategoryHasArticles = async (categoryId) => {
   // IMPORTANTE: Você precisará criar esta rota no seu backend
-  const { data } = await axios.get(`${API_URL}/categories/${categoryId}/article-count`);
+  const { data } = await apiClient.get(`/categories/${categoryId}/article-count`);
   return data; // Espera-se um retorno como { count: 3 }
 };
 
 const createCategory = ({ token, name }) => {
-  return axios.post(`${API_URL}/categories`, { name }, { headers: { Authorization: `Bearer ${token}` } });
+  return apiClient.post(`/categories`, { name }, { headers: { Authorization: `Bearer ${token}` } });
 };
 
 const updateCategory = ({ token, id, name }) => {
-  return axios.put(`${API_URL}/categories/${id}`, { name }, { headers: { Authorization: `Bearer ${token}` } });
+  return apiClient.put(`/categories/${id}`, { name }, { headers: { Authorization: `Bearer ${token}` } });
 };
 
 const deleteCategory = ({ token, id }) => {
-  return axios.delete(`${API_URL}/categories/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+  return apiClient.delete(`/categories/${id}`, { headers: { Authorization: `Bearer ${token}` } });
 };
 
 

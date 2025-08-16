@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'; 
-import axios from 'axios';
+import apiClient from '../../api/axiosConfig'; 
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
@@ -7,19 +7,15 @@ import './UsersPage.css';
 import CustomSelect from '../../components/CustomSelect';
 
 
-
-// --- Funções de API ---
-const API_URL = 'https://137.131.212.103/api';
-
 const fetchUsers = async (token) => {
-  const { data } = await axios.get(`${API_URL}/users`, {
+  const { data } = await apiClient.get(`/users`, {
     headers: { Authorization: `Bearer ${token}` }
   });
   return data;
 };
 
 const fetchRoles = async (token) => {
-  const { data } = await axios.get(`${API_URL}/roles`, { // IMPORTANTE: Você precisará criar esta rota
+  const { data } = await apiClient.get(`/roles`, { // IMPORTANTE: Você precisará criar esta rota
     headers: { Authorization: `Bearer ${token}` }
   });
   return data;
@@ -27,7 +23,7 @@ const fetchRoles = async (token) => {
 
 
 const updateUser = ({ token, id, payload }) => {
-  return axios.put(`${API_URL}/users/${id}`, payload, {
+  return apiClient.put(`/users/${id}`, payload, {
     headers: { Authorization: `Bearer ${token}` }
   });
 };

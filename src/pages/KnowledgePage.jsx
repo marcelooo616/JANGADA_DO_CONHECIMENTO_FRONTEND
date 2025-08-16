@@ -1,7 +1,7 @@
 // src/pages/KnowledgePage.jsx
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import apiClient from '../api/axiosConfig'; 
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import useDebounce from '../hooks/useDebounce'; // Assumindo que está em src/hooks/
@@ -9,8 +9,7 @@ import ArticleCard from '../components/ArticleCard';
 import './KnowledgePage.css';
 import CategoryDropdown from '../components/CategoryDropdown';
 
-// --- Sua lógica de API fora do componente ---
-const API_URL = 'https://137.131.212.103/api';
+
 
 const fetchArticles = async ({ queryKey }) => {
   const [_key, { searchTerm, selectedCategory, currentPage }] = queryKey;
@@ -23,7 +22,7 @@ const fetchArticles = async ({ queryKey }) => {
   params.append('page', currentPage);
   params.append('limit', 8);
 
-  const { data } = await axios.get(`${API_URL}/articles`, { params });
+  const { data } = await apiClient.get(`/articles`, { params });
   return data;
 };
 
@@ -54,7 +53,7 @@ const KnowledgePage = () => {
   useEffect(() => {
     const fetchCategoriesForFilter = async () => {
       try {
-        const response = await axios.get(`${API_URL}/categories`);
+        const response = await apiClient.get(`/categories`);
         setCategories(['Todas', ...response.data]); 
       } catch (err) {
         console.error("Erro ao buscar categorias", err);

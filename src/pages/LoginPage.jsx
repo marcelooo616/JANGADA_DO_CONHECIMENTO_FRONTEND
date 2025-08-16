@@ -1,12 +1,11 @@
 // src/pages/LoginPage.jsx
 
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import apiClient from '../api/axiosConfig'; 
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 
-const API_URL = 'https://137.131.212.103/api';
 
 import './AuthForm.css';
 
@@ -29,7 +28,7 @@ function LoginPage() {
       navigate('/');
     }else{
        try {
-      const response = await axios.post(`${API_URL}/auth/login`, {
+      const response = await apiClient.post(`/auth/login`, {
         email,
         password,
       });
