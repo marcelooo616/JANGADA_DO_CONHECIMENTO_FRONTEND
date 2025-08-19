@@ -1,44 +1,36 @@
 // src/components/Navbar.jsx
 
-// IMPORTANTE: Troque 'Link' por 'NavLink' para os links de navegação
+import { useState } from 'react'; // 1. Importa o useState
 import { NavLink, Link } from 'react-router-dom'; 
 import { useAuth } from '../context/AuthContext';
 import ProfileDropdown from './ProfileDropdown';
 import './Navbar.css';
 
-
 function Navbar() {
   const { user } = useAuth();
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // 2. Estado para controlar o menu
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* Lado Esquerdo: Logo e Navegação Principal */}
         <div className="navbar-left">
           <div className="navbar-logo">
-            <Link to="/">Jangada do Conhecimento</Link>
+            <Link to="/" onClick={() => setIsMenuOpen(false)}>Jangada do Conhecimento</Link>
           </div>
+          {/* Este menu só aparece em telas grandes */}
           <div className="navbar-main-links">
-            {/* Adicionando os novos links com NavLink */}
             <NavLink to="/knowledge">Knowledge</NavLink>
-           
-              {user?.role === 'admin' && (
             <NavLink to="/cursos">Cursos</NavLink>
-          )}
-            
           </div>
         </div>
 
-        {/* Lado Direito: Ações e Perfil do Usuário */}
+        {/* Este menu só aparece em telas grandes */}
         <div className="navbar-right">
           {user?.role === 'admin' && (
             <NavLink to="/admin/artigo/novo" className="btn-new-article">Novo Artigo</NavLink>
           )}
           {user ? (
-            <>
-              {/* <span className="welcome-message">Bem-vindo, {user.name}!</span> */}
-              <ProfileDropdown />
-            </>
+            <ProfileDropdown />
           ) : (
             <>
               <NavLink to="/login">Login</NavLink>
@@ -46,7 +38,40 @@ function Navbar() {
             </>
           )}
         </div>
+
+        {/* 3. Botão Hambúrguer (só aparece em telas pequenas) */}
+        <button 
+          className={`hamburger-menu ${isMenuOpen ? 'open' : ''}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Abrir menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
+
+      {/* 4. Menu Mobile Dropdown (só aparece quando clicamos no hambúrguer) */}
+      {isMenuOpen && (
+        <div className="mobile-menu">
+          <NavLink to="/knowledge" onClick={() => setIsMenuOpen(false)}>Knowledge</NavLink>
+          <NavLink to="/cursos" onClick={() => setIsMenuOpen(false)}>Cursos</NavLink>
+          <hr className="mobile-menu-divider" />
+          {user?.role === 'admin' && (
+            <NavLink to="/admin/artigo/novo" onClick={() => setIsMenuOpen(false)}>Novo Artigo</NavLink>
+          )}
+          {user ? (
+            <div className="mobile-profile-section">
+              <ProfileDropdown />
+            </div>
+          ) : (
+            <>
+              <NavLink to="/login" onClick={() => setIsMenuOpen(false)}>Login</NavLink>
+              <NavLink to="/register" onClick={() => setIsMenuOpen(false)}>Cadastro</NavLink>
+            </>
+          )}
+        </div>
+      )}
     </nav>
   );
 }

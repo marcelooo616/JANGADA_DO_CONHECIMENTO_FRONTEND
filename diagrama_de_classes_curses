@@ -1,0 +1,79 @@
+Diagrama de Entidades e Relações (A Arquitetura dos Dados)
+Este é o "mapa" de como todas as nossas tabelas se conectam.
+
+
+
+┌─────────────────┐       ┌────────────────┐
+│      Users      │       │      Roles     │
+├─────────────────┤       ├────────────────┤
+│ id (PK)         │◄───(1)┤ id (PK)        │
+│ full_name       │       │ name           │
+│ email           │       └────────────────┘
+│ IS_ACTIVE       │
+│ total_xp        │(N)┐
+│ level           │   │
+└──────┬───┬───┬──┘   │
+       │   │   │      │
+      (1) (N) (N)     │
+       │   │   │      │
+       │   │   └───────────has many──────────►┌────────────────┐
+       │   │                                  │ UserAchievements│
+       │   └───────────has many──────────►┌────────────────┐
+       │                                  │ LessonProgress │
+       └────────────has many──────────►┌────────────────┐
+                                        │  Enrollments   │
+                                        └────────────────┘
+
+┌─────────────────┐       ┌────────────────┐
+│    Articles     │       │   Categories   │
+├─────────────────┤       ├────────────────┤
+│ id (PK)         │◄───(N)┤ id (PK)        │
+│ title           │       │ name           │
+│ content (JSON)  │       │ slug           │
+└────────┬───┬────┘       └────────┬───┬───┘
+         │   │                     │   │
+        (1) (1)                   (N) (N)
+         │   │                     │   │
+         │   └──────belongs to─────┘   │
+         │                             │
+         └──────────belongs to─────────┘
+
+┌─────────────────┐
+│     Courses     │
+├─────────────────┤
+│ id (PK)         │◄───(N)───(Enrollments)
+│ title           │
+│ description     │
+└────────┬───┬───┬┘
+         │   │   │
+        (1) (1) (N)
+         │   │   │
+         │   │   └──────────has many──────────►┌────────────────┐
+         │   │                                  │    Modules     │
+         │   └──────────belongs to──────────────┤ id (PK)        │
+         │                                      │ title          │
+         └──────────belongs to──────────────────►│ order          │
+                                                └────────┬───┬───┘
+                                                         │   │
+                                                        (1) (N)
+                                                         │   │
+                                                         │   └──────has many─────────►┌────────────────┐
+                                                         │                           │    Lessons     │
+                                                         └─────────belongs to────────┤ id (PK)        │
+                                                                                     │ title          │
+                                                                                     │ content (JSON) │
+                                                                                     │ video_url      │
+                                                                                     └───────────┬────┘
+                                                                                                 │
+                                                                                                (N)
+                                                                                                 │
+                                                                           (LessonProgress)──────┘
+
+┌─────────────────┐
+│  Achievements   │
+├─────────────────┤
+│ id (PK)         │◄───(N)───(UserAchievements)
+│ name (selo)     │
+│ description     │
+│ icon_url        │
+└─────────────────┘

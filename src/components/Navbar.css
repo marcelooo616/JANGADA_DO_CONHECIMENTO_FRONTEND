@@ -103,3 +103,109 @@
   background-color: var(--color-accent-hover, #535bf2);
   color: #fff !important;
 }
+
+/* --- Estilos para os Elementos Mobile (escondidos em telas grandes) --- */
+/* Dentro da sua @media (max-width: 768px) */
+
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 1.6rem;  /* Reduzido de 2rem */
+  height: 1.6rem; /* Reduzido de 2rem */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+  display: none;
+}
+
+.hamburger-menu span {
+  width: 1.6rem;  /* Reduzido de 2rem */
+  height: 0.2rem; /* Reduzido de 0.25rem (mais fino) */
+  background: var(--text-primary, #fff);
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+}
+
+/* O resto das regras de animação (.open) continua o mesmo */
+
+/* Animação do Hambúrguer para "X" */
+.hamburger-menu.open span:nth-child(1) {
+  transform: rotate(45deg);
+}
+.hamburger-menu.open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(20px);
+}
+.hamburger-menu.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+
+.mobile-menu {
+  display: none; /* Escondido por padrão */
+}
+
+
+/* Estilos para telas com 768px de largura ou menos */
+@media (max-width: 815px) {
+  
+  /* Esconde os menus de desktop */
+  .navbar-main-links, .navbar-right {
+    display: none;
+  }
+
+  /* Mostra o botão hambúrguer */
+  .hamburger-menu {
+    display: flex;
+    
+  }
+
+  /* Estiliza o menu dropdown mobile */
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    
+    /* Posição e aparência */
+    position: absolute;
+    top: 74px; /* Altura da navbar */
+    left: 0;
+    width: 100%;
+    padding: 2rem 0;
+
+    /* Efeito de vidro */
+    background-color: rgba(13, 13, 13, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color, #4a5568);
+  }
+
+  /* Estilo dos links no menu mobile */
+  .mobile-menu a {
+    color: var(--text-primary, #e2e8f0);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .mobile-menu-divider {
+    width: 80%;
+    border: none;
+    border-top: 1px solid var(--border-color, #4a5568);
+  }
+
+  .navbar-container {
+    padding: 1rem 1.5rem; /* Reduz o padding lateral */
+}
+  
+  /* Ajuste para o dropdown de perfil no menu mobile */
+  .mobile-profile-section .profile-btn {
+    color: var(--text-primary);
+  }
+}

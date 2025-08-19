@@ -22,6 +22,7 @@ import CategoriesPage from './pages/CategoriesPage';
 import AdminLayout from './pages/admin/AdminLayout'; 
 import UsersPage from './pages/admin/UsersPage'; 
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
+import CoursesPage from './pages/CoursesPage';
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
         <Route path="/artigo/:slug" element={<ArticlePage />} />
         <Route path="/knowledge" element={<KnowledgePage/>} />
         <Route path="/categorias" element={<CategoriesPage/>} />
+        <Route path="/cursos" element={<CoursesPage />} />
 
          {/* Rotas de Admin */}
         <Route path="/admin/artigo/novo" element={<ProtectedRoute><ArticleEditor /></ProtectedRoute>} />

@@ -1,0 +1,108 @@
+/* Reutilizamos muitos estilos da KnowledgePage e AdminPage */
+.courses-page-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem;
+   position: relative; 
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 50vh;
+  background-color: #1a1a1a2c;
+  border-radius: 10px;
+}
+
+.courses-page-container::before {
+  content: '';
+  position: absolute;
+  
+  /* Posiciona a luz atrás dos cards */
+  z-index: -1;
+  
+  /* Centraliza a luz no meio do grid */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* Define o tamanho da área da luz */
+  width: 100%; 
+  height: 100%;
+
+  /* Cria o brilho circular com a sua cor azulada */
+background: #000000;
+background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(26, 26, 26, 0.79) 100%);
+
+  /* Desfoca o gradiente para criar o efeito de "névoa" de luz */
+  filter: blur(150px);
+
+  /* Controla a intensidade geral da luz */
+  
+  
+  /* Impede que o usuário interaja com a camada de luz */
+  pointer-events: none;
+}
+
+
+
+/* --- Ajustes Gerais para Telas Menores (Tablets e abaixo) --- */
+@media (max-width: 900px) {
+  .courses-page-container {
+    padding: 3rem 1rem; /* Reduz o padding lateral */
+  }
+
+  /* Faz o cabeçalho ficar centralizado em telas menores */
+  .section-header {
+    text-align: center;
+    align-items: center;
+    padding-left: 0; /* Remove o padding que era para a linha vertical */
+  }
+  .section-header::before {
+    display: none; /* Esconde a linha vertical para um visual mais limpo */
+  }
+
+  .courses-grid {
+    /* Ajusta o tamanho mínimo do card para caberem 2 em um tablet */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+
+/* --- Adaptação Específica para Celulares --- */
+@media (max-width: 600px) {
+  .courses-page-container {
+    padding: 2rem 1rem;
+  }
+
+  /* Empilha a barra de busca e o filtro de categoria */
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch; /* Faz ambos ocuparem 100% da largura */
+    gap: 1rem;
+  }
+
+  .custom-select-wrapper {
+    width: 100%; /* Garante que a dropdown ocupe toda a largura */
+  }
+
+  /* Ajusta o tamanho dos títulos para telas pequenas */
+  .section-title {
+    font-size: 2rem;
+  }
+  .section-subtitle {
+    font-size: 1rem;
+  }
+  
+  /* Garante que o grid não tenha um padding excessivo */
+  .courses-grid {
+    padding: 1rem;
+  }
+}
