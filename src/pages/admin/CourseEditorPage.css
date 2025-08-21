@@ -1,0 +1,32 @@
+/* src/pages/admin/CourseEditorPage.css */
+.course-editor-page {
+  padding: 1rem;
+}
+.course-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.course-editor-title {
+  font-size: 1.8rem;
+  margin: 0.5rem 0 0;
+}
+.back-link {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.course-editor-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+.course-modules-container, .course-details-sidebar {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+}

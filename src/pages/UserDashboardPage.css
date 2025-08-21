@@ -1,0 +1,19 @@
+.dashboard-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Estilo para o JSON de teste */
+.dashboard-container pre {
+    background-color: #111;
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 8px;
+    color: #a0aec0;
+    white-space: pre-wrap;
+}

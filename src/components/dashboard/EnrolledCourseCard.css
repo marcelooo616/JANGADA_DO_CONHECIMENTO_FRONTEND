@@ -1,0 +1,91 @@
+.enrolled-course-card {
+  display: flex;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color, #4a5568);
+  border-radius: 12px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+.enrolled-course-card:hover {
+  border-color: var(--color-accent, #646cff);
+  transform: translateY(-3px);
+}
+
+.enrolled-course-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.enrolled-course-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.enrolled-course-category {
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--color-accent, #646cff);
+  margin-bottom: 0.25rem;
+}
+
+.enrolled-course-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+}
+
+/* --- Barra de Progresso --- */
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--color-accent, #646cff);
+  border-radius: 4px;
+  transition: width 0.5s ease-in-out;
+}
+
+.progress-bar-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+.continue-link {
+  color: var(--color-accent, #646cff);
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.continue-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade para o card */
+@media (max-width: 480px) {
+  .enrolled-course-card {
+    flex-direction: column;
+  }
+  .enrolled-course-image {
+    width: 100%;
+    height: 150px;
+  }
+}

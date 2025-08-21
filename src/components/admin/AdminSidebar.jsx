@@ -20,6 +20,10 @@ const AdminSidebar = () => {
           <i className="fas fa-users"></i>
           <span>Usuários</span>
         </NavLink>
+        <NavLink to="/admin/courses" className="sidebar-link">
+          <i className="fas fa-users"></i>
+          <span>courses</span>
+        </NavLink>
       </nav>
     </aside>
   );

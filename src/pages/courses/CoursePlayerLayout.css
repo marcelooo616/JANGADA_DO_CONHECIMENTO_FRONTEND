@@ -1,0 +1,109 @@
+/* src/pages/courses/CoursePlayerLayout.css */
+
+.course-player-layout {
+  display: grid;
+  /* Sidebar com largura fixa e conteúdo flexível */
+  grid-template-columns: 320px 1fr; 
+  /* Ocupa 100% da altura da janela de visualização */
+  height: 100vh;
+ 
+}
+
+.course-curriculum-sidebar {
+  /* Fundo sutil para se destacar */
+  background-color: rgba(17, 17, 17, 0.5);
+  border-right: 1px solid var(--border-color);
+  padding: 2rem 1.5rem;
+  overflow-y: auto; /* Adiciona scroll apenas na sidebar */
+  margin-left: 25px;
+  border-radius: 10px;
+  height: 97vh;
+  /* Removemos margens e bordas arredondadas para um visual integrado */
+}
+
+.course-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin: 0 0 2.5rem 0;
+  line-height: 1.3;
+}
+
+.module-section { margin-bottom: 2rem; }
+
+.module-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.lessons-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lesson-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.lesson-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+.lesson-link.active {
+  background-color: var(--color-accent);
+  color: #fff;
+}
+
+/* --- NOVO: Estilo para o ícone de progresso --- */
+.lesson-link .progress-icon {
+  font-size: 0.9rem;
+  width: 18px; /* Garante alinhamento consistente */
+  text-align: center;
+}
+
+/* Quando a aula estiver concluída, o ícone muda */
+.lesson-link.completed .progress-icon {
+  color: #2ecc71; /* Verde de sucesso */
+}
+/* E o texto fica um pouco mais claro */
+.lesson-link.completed {
+  color: var(--text-primary);
+}
+
+
+.lesson-content-area {
+  padding: 2rem 4rem;
+  overflow-y: auto;
+  
+}
+
+/* Media query para telas menores */
+@media (max-width: 900px) {
+  .course-player-layout {
+    grid-template-columns: 1fr; /* Coluna única */
+    height: auto;
+    padding-top: 75px;
+  }
+  .course-curriculum-sidebar {
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+}

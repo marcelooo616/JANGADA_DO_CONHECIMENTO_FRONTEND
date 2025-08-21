@@ -1,0 +1,19 @@
+.achievements-section {
+  width: 100%;
+}
+
+.achievements-grid {
+  display: grid;
+  /* Cria colunas responsivas para os selos */
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.no-achievements-message {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color, #4a5568);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+}

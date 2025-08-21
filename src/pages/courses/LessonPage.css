@@ -1,0 +1,44 @@
+.lesson-page {
+  padding-bottom: 4rem; /* Espaço extra no final */
+}
+
+.lesson-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin: 0 0 2rem 0;
+  line-height: 1.2;
+}
+
+.lesson-content {
+  /* O LexicalRenderer cuidará da maior parte do estilo do conteúdo */
+  max-width: 800px;
+}
+
+.lesson-actions {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  max-width: 800px;
+}
+
+.complete-lesson-btn {
+  padding: 0.8rem 1.8rem;
+  background-color: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.complete-lesson-btn:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+  transform: scale(1.02);
+}
+.complete-lesson-btn:disabled {
+  background-color: #333;
+  color: #777;
+  cursor: not-allowed;
+}

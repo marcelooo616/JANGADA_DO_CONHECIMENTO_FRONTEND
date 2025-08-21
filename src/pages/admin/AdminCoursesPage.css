@@ -1,0 +1,10 @@
+/* Reutiliza estilos de outras páginas de admin para consistência */
+@import url('../CategoriesPage.css'); 
+@import url('./UsersPage.css');
+
+/* Estilos específicos, se necessário */
+.admin-table th, .admin-table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

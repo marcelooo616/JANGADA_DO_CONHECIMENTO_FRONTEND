@@ -1,14 +1,25 @@
-// src/api/axiosConfig.js
 import axios from 'axios';
 
-// Cria uma instância do axios com a configuração base
-///baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000/api',
 const apiClient = axios.create({
-  // 
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000/api',
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  baseURL: 'http://localhost:3000/api',
+  headers: { 'Content-Type': 'application/json' },
 });
+
+// --- INTERCEPTOR COM DEPURADOR ---
+apiClient.interceptors.request.use(
+  (config) => {
+    
+    
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 export default apiClient;
